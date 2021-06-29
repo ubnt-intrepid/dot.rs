@@ -32,7 +32,7 @@ impl App {
         let url = resolve_url(query)?;
         let dotdir = self.dotfiles.root_dir().to_string_lossy();
         util::wait_exec("git",
-                        &["clone", url.as_str(), dotdir.borrow()],
+                        &["clone", "--recurisve", url.as_str(), dotdir.borrow()],
                         None,
                         self.dry_run)
         .map_err(Into::into)
